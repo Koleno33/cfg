@@ -1,0 +1,21 @@
+{
+  "pyright.inlayHints.functionReturnTypes": false,
+  "pyright.inlayHints.variableTypes": false,
+  "pyright.inlayHints.parameterTypes": false,
+  "diagnostic.showUnused": false ,
+  "inlayHint.enable": false,
+  "languageserver": {
+    "haskell": {
+      "command": "haskell-language-server-wrapper",
+      "args": ["--lsp"],
+      "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
+      "filetypes": ["haskell", "lhaskell"]
+    }
+  },
+  "coc.preferences.enableFloatHighlight": true,
+  "coc.preferences.enableHoverHighlight": true,
+  "breadcrumbs.enabled": true,
+  "breadcrumbs.filePath": "last",
+  "outline.updatetime": 1000
+}
+
