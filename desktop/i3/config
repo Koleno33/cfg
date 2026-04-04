@@ -34,6 +34,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+# for xterm
+# exec --no-startup-id xrdb -merge ~/.Xresources
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
@@ -49,13 +52,13 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run -fn 'AdwaitaMono-11' -nb '#04162A' -nf '#8DB0C3' -sb '#216395' -sf '#8DB0C3'
+bindsym $mod+d exec --no-startup-id dmenu_run -fn 'AdwaitaMono-13' -nb '#111111' -nf '#f1f1f1' -sb '#333333' -sf '#f1f1f1'
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -181,28 +184,31 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-        separator_symbol "  "
-        position top
-        tray_output none
-        colors {
-          background #111111
-          focused_workspace #CECECE #CECECE #000000
-          active_workspace #333333 #333333 #888888
-          inactive_workspace #CECECE #333333 #f1f1f1
-          urgent_workspace #eb709b #eb709b #ffffff
-        }
-}
+#bar {
+#        status_command i3status
+#        separator_symbol "  "
+#        position top
+#        tray_output none
+#        colors {
+#          background #111111
+#          focused_workspace #CECECE #CECECE #000000
+#          active_workspace #333333 #333333 #888888
+#          inactive_workspace #CECECE #333333 #f1f1f1
+#          urgent_workspace #eb709b #eb709b #ffffff
+#        }
+#}
+
+#exec_always --no-startup-id polybar -c ~/.config/polybar/panels/panel/elementary_dark.ini main
+exec_always --no-startup-id bash ~/.config/polybar/launch.sh
 
 # gaps
-gaps inner 10
-gaps outer 4
-smart_gaps on
+# gaps inner 10
+# gaps outer 4
+# smart_gaps on
 
 # borders
 # hide_edge_borders none
-default_border pixel 
+# default_border pixel 
 for_window [tiling] border pixel 2 
 smart_borders on
 
